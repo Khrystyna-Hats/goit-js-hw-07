@@ -25,17 +25,25 @@ function createGalleryMarkup(galleryItems) {
   galleryContainer.addEventListener('click',onImgClick);
 
 function onImgClick(event) { 
-  preventDefault();
-
-  if (!event.target.contains('g_allery_item')) {
+    event.preventDefault();
+    
+  if (event.target.nodeName !== "IMG") {
     return;
-  };
+    };
 
-  basicLightbox.create(`
-		<img width="1400" height="900" src="${galleryItems.preview}">
-	`).show()
 
-  // console.log(galleryItems.original)
+    const instance = basicLightbox.create(`
+    <img src="${event.target.dataset.source}" alt="${event.target.alt}">
+`)
+
+    instance.show()
+    
+
+    document.addEventListener("keydown", event => {
+    if (event.key === 'Escape') { 
+        instance.close();
+    }
+});
   };
 
 
