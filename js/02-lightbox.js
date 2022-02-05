@@ -14,6 +14,4 @@ function createGalleryCard({ description, preview, original }) {
     `
 };
 
-let gallerySlider = new SimpleLightbox('.gallery a', { captionsData: "alt", captionDelay: 250, });
-
-console.log(gallerySlider)
+const gallerySlider = new SimpleLightbox('.gallery a', { captionsData: "alt", captionDelay: 250, });
